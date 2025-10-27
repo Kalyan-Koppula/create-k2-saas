@@ -1,10 +1,18 @@
 import { Hono } from 'hono';
 import { PostPayloadSchema, PostResponseSchema } from '@k2-saas/shared-types';
+import { getDb } from './db';
+import { users } from './db/schema';
 
 const app = new Hono();
 
 app.get('/', c => {
   return c.text('Hello from K2-Sass!');
+});
+
+app.get('/users', async c => {
+  const db = getDb(c);
+  const allUsers = await db.select().from(users);
+  return c.json(allUsers);
 });
 
 app.post('/post', async c => {
