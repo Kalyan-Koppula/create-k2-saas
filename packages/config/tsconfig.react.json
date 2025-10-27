@@ -1,0 +1,12 @@
+// packages/config/tsconfig.react.json
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "noEmit": true
+  }
+}

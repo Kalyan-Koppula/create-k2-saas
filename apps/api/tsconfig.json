@@ -1,4 +1,6 @@
+// apps/api/tsconfig.json (Replaces existing content)
 {
+  "extends": "../../packages/config/tsconfig.base.json",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
@@ -7,6 +9,11 @@
     "skipLibCheck": true,
     "lib": ["ESNext"],
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "jsxImportSource": "hono/jsx",
+    "baseUrl": ".",
+    "paths": {
+      // Monorepo alias for shared packages
+      "@k2-saas/*": ["../../packages/*/src"] 
+    }
   }
 }
