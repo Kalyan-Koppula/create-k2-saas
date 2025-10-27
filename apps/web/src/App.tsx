@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import type { PostPayload, PostResponse } from "@k2-saas/shared-types";
-import { apiClient } from "./utils/api";
+import React, { useState } from 'react';
+import type { PostPayload, PostResponse } from '@k2-saas/shared-types';
+import { apiClient } from './utils/api';
 
 const App: React.FC = () => {
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
   const [result, setResult] = useState<PostResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -16,13 +16,13 @@ const App: React.FC = () => {
     const payload: PostPayload = { name, message: message || undefined };
 
     try {
-      const result = await apiClient<PostResponse>("post", {
-        method: "POST",
+      const result = await apiClient<PostResponse>('post', {
+        method: 'POST',
         body: JSON.stringify(payload),
       });
       setResult(result);
     } catch (err: any) {
-      setError(err?.message ?? "Network error");
+      setError(err?.message ?? 'Network error');
     }
   };
 
@@ -36,7 +36,7 @@ const App: React.FC = () => {
             <input
               className="w-full rounded border px-3 py-2"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={e => setName(e.target.value)}
               required
             />
           </div>
@@ -45,7 +45,7 @@ const App: React.FC = () => {
             <textarea
               className="w-full rounded border px-3 py-2"
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={e => setMessage(e.target.value)}
             />
           </div>
           <div className="flex gap-2">

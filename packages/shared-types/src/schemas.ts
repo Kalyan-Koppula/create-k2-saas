@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 // Payload sent to the worker
 export const PostPayloadSchema = z.object({

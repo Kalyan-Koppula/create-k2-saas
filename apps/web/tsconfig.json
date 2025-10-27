@@ -1,5 +1,5 @@
 {
-  "extends": "../../packages/config/tsconfig.react.json",
+  "extends": "../../tsconfig.react.json",
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

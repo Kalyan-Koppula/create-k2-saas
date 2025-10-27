@@ -1,4 +1,3 @@
-// packages/config/tsconfig.react.json
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {

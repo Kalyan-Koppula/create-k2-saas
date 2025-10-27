@@ -1,6 +1,6 @@
 // apps/api/tsconfig.json (Replaces existing content)
 {
-  "extends": "../../packages/config/tsconfig.base.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
