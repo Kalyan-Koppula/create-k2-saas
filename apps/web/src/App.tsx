@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { PostPayload, PostResponse } from '@k2-saas/shared-types';
 import { apiClient } from './utils/api';
+import { useForm } from 'react-hook-form';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { FormItem, FormLabel } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 
-const App: React.FC = () => {
-  const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
-  const [result, setResult] = useState<PostResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
+export default function App() {
+  const { register, handleSubmit } = useForm<PostPayload>();
+  const [result, setResult] = React.useState<PostResponse | null>(null);
+  const [error, setError] = React.useState<string | null>(null);
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: PostPayload) => {
     setError(null);
     setResult(null);
-
-    const payload: PostPayload = { name, message: message || undefined };
 
     try {
       const result = await apiClient<PostResponse>('post', {
         method: 'POST',
-        body: JSON.stringify(payload),
+        body: JSON.stringify(data),
       });
       setResult(result);
     } catch (err: any) {
@@ -28,49 +29,42 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
-      <div className="w-full max-w-md bg-white rounded shadow p-6">
-        <h1 className="text-2xl font-semibold mb-4">Send a Post</h1>
-        <form onSubmit={submit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium mb-1">Name</label>
-            <input
-              className="w-full rounded border px-3 py-2"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium mb-1">Message</label>
-            <textarea
-              className="w-full rounded border px-3 py-2"
-              value={message}
-              onChange={e => setMessage(e.target.value)}
-            />
-          </div>
-          <div className="flex gap-2">
-            <button
-              className="px-4 py-2 bg-blue-600 text-white rounded"
-              type="submit"
-            >
-              Send
-            </button>
-          </div>
-        </form>
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>Send a Post</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <Input {...register('name', { required: true })} />
+            </FormItem>
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <textarea
+                {...register('message')}
+                className="flex min-h-20 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              />
+            </FormItem>
+            <Button type="submit">Send</Button>
+          </form>
 
-        {error && <div className="mt-4 text-red-600">Error: {error}</div>}
+          {error && (
+            <div className="mt-4 text-sm font-medium text-destructive">
+              Error: {error}
+            </div>
+          )}
 
-        {result && (
-          <div className="mt-4 p-3 border rounded bg-slate-50">
-            <div className="text-sm text-gray-600">Response:</div>
-            <pre className="text-sm mt-2">
-              {JSON.stringify(result, null, 2)}
-            </pre>
-          </div>
-        )}
-      </div>
+          {result && (
+            <div className="mt-4 p-3 border rounded bg-muted">
+              <div className="text-sm text-muted-foreground">Response:</div>
+              <pre className="text-sm mt-2 p-2 bg-background rounded">
+                {JSON.stringify(result, null, 2)}
+              </pre>
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
-};
-
-export default App;
+}
