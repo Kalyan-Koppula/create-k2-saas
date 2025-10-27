@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import type { PostPayload, PostResponse } from "@k2-saas/shared-types";
+import { apiClient } from "./utils/api";
 
 const App: React.FC = () => {
     const [name, setName] = useState("");
@@ -15,18 +16,11 @@ const App: React.FC = () => {
         const payload: PostPayload = { name, message: message || undefined };
 
         try {
-            const res = await fetch("http://localhost:8787/post", {
+            const result = await apiClient<PostResponse>("post", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
             });
-
-            const json = await res.json();
-            if (!res.ok) {
-                setError(json?.error || "Request failed");
-                return;
-            }
-            setResult(json as PostResponse);
+            setResult(result);
         } catch (err: any) {
             setError(err?.message ?? "Network error");
         }
