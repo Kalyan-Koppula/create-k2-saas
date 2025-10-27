@@ -6,21 +6,9 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md,yaml}\"",
-    "check-types": "turbo run check-types",
-    "prepare": "husky"
-  },
-  "lint-staged": {
-    "**/*.{ts,tsx,js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "**/*.{json,css,md,yaml}": [
-      "prettier --write"
-    ]
+    "check-types": "turbo run check-types"
   },
   "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "turbo": "^2.5.8",
     "typescript": "5.9.2"

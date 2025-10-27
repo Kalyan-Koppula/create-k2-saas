@@ -1,3 +1,9 @@
-@import "tailwindcss";
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
 
-/* You can add custom global styles below the @import if needed */
+/* Global styles - add custom rules below */
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #0f172a;
+}

@@ -6,8 +6,10 @@
   "scripts": {
     "build": "echo 'No build step required for types'"
   },
-  "devDependencies": {
-    "typescript": "^5.0.0",
+  "dependencies": {
     "zod": "^3.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
   }
 }

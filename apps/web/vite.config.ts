@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss(),
+  // Use the Tailwind Vite plugin; the plugin will pick up `tailwind.config.cjs`.
+  tailwindcss(),
   ],
 });
