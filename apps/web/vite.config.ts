@@ -5,33 +5,29 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
-
   // Load environment variables for this mode (development/production)
   // loadEnv returns values as strings; prefix filter is '' to get all VITE_ vars
-  const env = loadEnv(mode, process.cwd(), '');
+  const env = loadEnv(mode, process.cwd(), "");
 
   return {
-    plugins: [
-      react(),
-      tailwindcss(),
-    ],
+    plugins: [react(), tailwindcss()],
     server: {
       proxy: {
-        '/api': {
+        "/api": {
           // Use loaded env value (fallback to localhost if missing)
           target: env.VITE_API_URL,
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
+          rewrite: (path) => path.replace(/^\/api/, ""),
           configure: (proxy, _options) => {
-            proxy.on('error', (err, _req, _res) => {
-              console.log('proxy error', err);
+            proxy.on("error", (err, _req, _res) => {
+              console.log("proxy error", err);
             });
-            proxy.on('proxyReq', (proxyReq, req, _res) => {
-              console.log('Proxying:', req.method, req.url, '→', proxyReq.path);
+            proxy.on("proxyReq", (proxyReq, req, _res) => {
+              console.log("Proxying:", req.method, req.url, "→", proxyReq.path);
             });
           },
         },
       },
-    }
+    },
   };
 });

@@ -13,7 +13,7 @@
     "baseUrl": ".",
     "paths": {
       // Monorepo alias for shared packages
-      "@k2-saas/*": ["../../packages/*/src"] 
+      "@k2-saas/*": ["../../packages/*/src"]
     }
   }
 }

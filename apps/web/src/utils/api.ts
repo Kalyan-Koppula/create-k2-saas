@@ -12,10 +12,10 @@ const config = {
 
 // Log config in development
 if (import.meta.env.DEV) {
-  console.log('API Config:', {
+  console.log("API Config:", {
     apiUrl: config.apiUrl,
     apiProxy: config.apiProxy,
-    isDevelopment: config.isDevelopment
+    isDevelopment: config.isDevelopment,
   });
 }
 
@@ -26,7 +26,7 @@ if (import.meta.env.DEV) {
  */
 export function getApiUrl(endpoint: string): string {
   // Remove leading slash if present
-  const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+  const cleanEndpoint = endpoint.startsWith("/") ? endpoint.slice(1) : endpoint;
 
   // In development, use the proxy
   if (config.isDevelopment) {
@@ -42,9 +42,9 @@ export function getApiUrl(endpoint: string): string {
  */
 export const defaultFetchOptions: RequestInit = {
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
-  credentials: 'include', // For cookies/auth if needed
+  credentials: "include", // For cookies/auth if needed
 };
 
 /**
@@ -52,7 +52,7 @@ export const defaultFetchOptions: RequestInit = {
  */
 export async function apiClient<T = unknown>(
   endpoint: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
 ): Promise<T> {
   const url = getApiUrl(endpoint);
   const response = await fetch(url, {
@@ -63,7 +63,7 @@ export async function apiClient<T = unknown>(
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.error || 'API request failed');
+    throw new Error(data.error || "API request failed");
   }
 
   return data as T;
