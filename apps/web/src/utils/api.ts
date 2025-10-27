@@ -3,6 +3,7 @@
 /**
  * API configuration and utilities
  */
+type RequestInit = Parameters<typeof fetch>[1];
 
 const config = {
   apiUrl: import.meta.env.VITE_API_URL,
@@ -12,7 +13,8 @@ const config = {
 
 // Log config in development
 if (import.meta.env.DEV) {
-  console.log('API Config:', {
+  // Using console.warn for development logging
+  console.warn('API Config:', {
     apiUrl: config.apiUrl,
     apiProxy: config.apiProxy,
     isDevelopment: config.isDevelopment,
