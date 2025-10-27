@@ -5,11 +5,13 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "lint:all": "eslint \"./apps/**/src/**/*.{ts,tsx,js,jsx}\" --config ./eslint.config.js",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md,yaml}\"",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
+    "eslint": "^9.38.0",
     "turbo": "^2.5.8",
     "typescript": "5.9.2"
   },

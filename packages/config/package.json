@@ -5,6 +5,7 @@
   "license": "MIT",
   "exports": {
     "./eslint-config": "./eslint.config.js",
+    "./prettier": "./prettier.config.cjs",
     "./tsconfig/base": "./tsconfig.base.json",
     "./tsconfig/react": "./tsconfig.react.json"
   },
