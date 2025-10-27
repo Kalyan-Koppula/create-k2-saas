@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
+        '@': resolve(__dirname, './src'),
         '@k2-saas': resolve(__dirname, '../../packages')
       }
     },

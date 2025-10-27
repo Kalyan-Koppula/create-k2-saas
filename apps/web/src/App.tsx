@@ -4,11 +4,12 @@ import { apiClient } from './utils/api';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { FormItem, FormLabel } from '@/components/ui/form';
+import { Form, FormItem, FormLabel } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
 export default function App() {
-  const { register, handleSubmit } = useForm<PostPayload>();
+  const form = useForm<PostPayload>();
+  const { register, handleSubmit } = form;
   const [result, setResult] = React.useState<PostResponse | null>(null);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -34,20 +35,22 @@ export default function App() {
           <CardTitle>Send a Post</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <Input {...register('name', { required: true })} />
-            </FormItem>
-            <FormItem>
-              <FormLabel>Message</FormLabel>
-              <textarea
-                {...register('message')}
-                className="flex min-h-20 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              />
-            </FormItem>
-            <Button type="submit">Send</Button>
-          </form>
+          <Form {...form}>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <Input {...register('name', { required: true })} />
+              </FormItem>
+              <FormItem>
+                <FormLabel>Message</FormLabel>
+                <textarea
+                  {...register('message')}
+                  className="flex min-h-20 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </FormItem>
+              <Button type="submit">Send</Button>
+            </form>
+          </Form>
 
           {error && (
             <div className="mt-4 text-sm font-medium text-destructive">
