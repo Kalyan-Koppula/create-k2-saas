@@ -1,0 +1,18 @@
+// packages/config/tsconfig.base.json (You'll need to create a config package)
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2020",
+    "lib": ["es2020", "dom"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    // Add path alias for your shared package
+    "paths": {
+      "@k2-saas/*": ["packages/*"]
+    }
+  }
+}
