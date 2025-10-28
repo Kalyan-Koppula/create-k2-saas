@@ -8,9 +8,9 @@ export const UserSchema = z.object({
   created_at: z.number(),
 });
 
-export const CreateUserPayloadSchema = UserSchema.omit({ 
-  id: true, 
-  created_at: true 
+export const CreateUserPayloadSchema = UserSchema.omit({
+  id: true,
+  created_at: true,
 });
 
 // Post schemas

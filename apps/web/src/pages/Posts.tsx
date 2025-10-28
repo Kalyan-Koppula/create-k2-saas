@@ -1,16 +1,23 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Post, CreatePostPayload } from '@k2-saas/shared-types';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Form, FormItem, FormLabel } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { usePostsStore } from '../store/posts';
 
 export function PostsPage() {
-  const { posts, isLoading, error, fetchPosts, createPost, deletePost } = usePostsStore();
+  const { posts, isLoading, error, fetchPosts, createPost, deletePost } =
+    usePostsStore();
   const form = useForm<CreatePostPayload>();
-  const [selectedUser, setSelectedUser] = React.useState<number>(1); // Demo: Fixed user ID
+  const [selectedUser] = React.useState<number>(1); // Demo: Fixed user ID
 
   React.useEffect(() => {
     fetchPosts();
@@ -51,7 +58,10 @@ export function PostsPage() {
           </CardHeader>
           <CardContent>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-4"
+              >
                 <FormItem>
                   <FormLabel>Title</FormLabel>
                   <Input {...form.register('title', { required: true })} />
@@ -65,9 +75,7 @@ export function PostsPage() {
                   />
                 </FormItem>
 
-                {error && (
-                  <p className="text-sm text-destructive">{error}</p>
-                )}
+                {error && <p className="text-sm text-destructive">{error}</p>}
 
                 <Button type="submit" disabled={isLoading}>
                   Create Post
@@ -81,9 +89,7 @@ export function PostsPage() {
         <Card>
           <CardHeader>
             <CardTitle>Recent Posts</CardTitle>
-            <CardDescription>
-              Browse and manage posts
-            </CardDescription>
+            <CardDescription>Browse and manage posts</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -94,8 +100,10 @@ export function PostsPage() {
                       <div>
                         <h3 className="font-semibold">{post.title}</h3>
                         <p className="text-sm text-muted-foreground">
-                          By {post.author?.name || 'Unknown'} • 
-                          {new Date(post.created_at * 1000).toLocaleDateString()}
+                          By {post.author?.name || 'Unknown'} •
+                          {new Date(
+                            post.created_at * 1000
+                          ).toLocaleDateString()}
                         </p>
                       </div>
                       <Button

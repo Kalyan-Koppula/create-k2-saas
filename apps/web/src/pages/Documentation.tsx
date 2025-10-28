@@ -1,11 +1,17 @@
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 export function DocumentationPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">K2-SaaS Template</h1>
-      
+
       <div className="grid md:grid-cols-2 gap-6">
         {/* API Section */}
         <Card>
@@ -19,19 +25,40 @@ export function DocumentationPage() {
             <div>
               <h3 className="font-semibold mb-2">Users</h3>
               <ul className="space-y-2 text-sm">
-                <li><code className="bg-muted px-1">GET /api/users</code> - List all users</li>
-                <li><code className="bg-muted px-1">POST /api/users</code> - Create a new user</li>
+                <li>
+                  <code className="bg-muted px-1">GET /api/users</code> - List
+                  all users
+                </li>
+                <li>
+                  <code className="bg-muted px-1">POST /api/users</code> -
+                  Create a new user
+                </li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-semibold mb-2">Posts</h3>
               <ul className="space-y-2 text-sm">
-                <li><code className="bg-muted px-1">GET /api/posts</code> - List all posts</li>
-                <li><code className="bg-muted px-1">POST /api/posts</code> - Create a new post</li>
-                <li><code className="bg-muted px-1">GET /api/posts/:id</code> - Get a post by ID</li>
-                <li><code className="bg-muted px-1">PATCH /api/posts/:id</code> - Update a post</li>
-                <li><code className="bg-muted px-1">DELETE /api/posts/:id</code> - Delete a post</li>
+                <li>
+                  <code className="bg-muted px-1">GET /api/posts</code> - List
+                  all posts
+                </li>
+                <li>
+                  <code className="bg-muted px-1">POST /api/posts</code> -
+                  Create a new post
+                </li>
+                <li>
+                  <code className="bg-muted px-1">GET /api/posts/:id</code> -
+                  Get a post by ID
+                </li>
+                <li>
+                  <code className="bg-muted px-1">PATCH /api/posts/:id</code> -
+                  Update a post
+                </li>
+                <li>
+                  <code className="bg-muted px-1">DELETE /api/posts/:id</code> -
+                  Delete a post
+                </li>
               </ul>
             </div>
           </CardContent>

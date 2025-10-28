@@ -15,8 +15,8 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': resolve(__dirname, './src'),
-        '@k2-saas': resolve(__dirname, '../../packages')
-      }
+        '@k2-saas': resolve(__dirname, '../../packages'),
+      },
     },
     server: {
       proxy: {

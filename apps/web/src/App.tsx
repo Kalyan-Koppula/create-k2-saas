@@ -12,20 +12,20 @@ export default function App() {
           <nav className="container mx-auto px-4 py-4">
             <div className="flex justify-between items-center">
               <div className="flex space-x-6">
-                <Link 
-                  to="/" 
+                <Link
+                  to="/"
                   className="font-medium text-foreground hover:text-foreground/80"
                 >
                   Documentation
                 </Link>
-                <Link 
-                  to="/posts" 
+                <Link
+                  to="/posts"
                   className="font-medium text-foreground hover:text-foreground/80"
                 >
                   Posts
                 </Link>
               </div>
-              <a 
+              <a
                 href="https://github.com/Kalyan-Koppula/k2-sass"
                 target="_blank"
                 rel="noopener noreferrer"

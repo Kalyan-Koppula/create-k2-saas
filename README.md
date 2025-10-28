@@ -16,6 +16,7 @@ A modern, self-documenting SaaS template using React, TypeScript, and Cloudflare
 ## Stack
 
 ### Frontend
+
 - React 19 with TypeScript
 - ShadcnUI Components
 - Zustand for State Management
@@ -23,12 +24,14 @@ A modern, self-documenting SaaS template using React, TypeScript, and Cloudflare
 - TailwindCSS for Styling
 
 ### Backend
+
 - Cloudflare Workers
 - D1 Database (SQLite)
 - Drizzle ORM
 - Hono for API Routing
 
 ### Shared
+
 - pnpm Workspace
 - Turborepo
 - Zod Schema Validation
@@ -37,17 +40,20 @@ A modern, self-documenting SaaS template using React, TypeScript, and Cloudflare
 ## Getting Started
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/Kalyan-Koppula/k2-sass.git
    cd k2-sass
    ```
 
 2. Install dependencies:
+
    ```bash
    pnpm install
    ```
 
 3. Create a D1 database:
+
    ```bash
    cd apps/api
    pnpm wrangler d1 create k2-sass-db
@@ -56,6 +62,7 @@ A modern, self-documenting SaaS template using React, TypeScript, and Cloudflare
 4. Update `wrangler.toml` with your D1 database ID
 
 5. Push the database schema:
+
    ```bash
    pnpm db:push
    ```
@@ -102,10 +109,12 @@ k2-sass/
 ## API Endpoints
 
 ### Users
+
 - `GET /users` - List all users
 - `POST /users` - Create a new user
 
 ### Posts
+
 - `GET /posts` - List all posts with authors
 - `POST /posts` - Create a new post
 - `GET /posts/:id` - Get post by ID
@@ -115,6 +124,7 @@ k2-sass/
 ## Type Safety
 
 The template ensures end-to-end type safety through:
+
 1. Zod schemas for API payloads and responses
 2. Shared TypeScript types between frontend and backend
 3. Drizzle ORM for type-safe database queries

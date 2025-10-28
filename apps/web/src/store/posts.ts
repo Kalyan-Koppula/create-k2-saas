@@ -9,7 +9,10 @@ interface PostsStore {
   error: string | null;
   fetchPosts: () => Promise<void>;
   createPost: (payload: CreatePostPayload) => Promise<void>;
-  updatePost: (id: number, payload: Partial<CreatePostPayload>) => Promise<void>;
+  updatePost: (
+    id: number,
+    payload: Partial<CreatePostPayload>
+  ) => Promise<void>;
   deletePost: (id: number) => Promise<void>;
 }
 
@@ -42,7 +45,7 @@ export const usePostsStore = create<PostsStore>((set, get) => ({
         method: 'POST',
         body: JSON.stringify(payload),
       });
-      
+
       if (!response.ok || !response.data) {
         throw new Error(response.error || 'Failed to create post');
       }
@@ -65,13 +68,13 @@ export const usePostsStore = create<PostsStore>((set, get) => ({
         method: 'PATCH',
         body: JSON.stringify(payload),
       });
-      
+
       if (!response.ok || !response.data) {
         throw new Error(response.error || 'Failed to update post');
       }
 
       set((state: PostsStore) => ({
-        posts: state.posts.map((post: Post) => 
+        posts: state.posts.map((post: Post) =>
           post.id === id ? response.data! : post
         ),
       }));
@@ -89,7 +92,7 @@ export const usePostsStore = create<PostsStore>((set, get) => ({
       const response = await apiClient<ApiResponse>(`posts/${id}`, {
         method: 'DELETE',
       });
-      
+
       if (!response.ok) {
         throw new Error(response.error || 'Failed to delete post');
       }
