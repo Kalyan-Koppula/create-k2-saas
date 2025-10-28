@@ -5,7 +5,7 @@
     "dev": "wrangler dev --port 8787",
     "deploy": "wrangler deploy --minify",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
-    "db:generate": "drizzle-kit generate:sqlite",
+    "db:generate": "drizzle-kit generate",
     "db:push": "wrangler d1 execute k2-sass-db --local --file ./migrations/0000_sparkling_jamie_braddock.sql",
     "db:studio": "drizzle-kit studio"
   },
@@ -16,6 +16,7 @@
     "hono": "^4.10.3"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251014.0",
     "drizzle-kit": "^0.31.5",
     "wrangler": "^4.4.0"
   }

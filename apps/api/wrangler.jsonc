@@ -8,12 +8,6 @@
 			"binding": "DB",
 			"database_name": "k2-sass-db",
 			"database_id": "k2-sass-db"
-		},
-		{
-			"binding": "k2_sass_db",
-			"database_name": "k2-sass-db",
-			"database_id": "081ed9e9-a73d-4fb3-bb9e-07b4ac085279",
-			"remote": true
 		}
 	]
 	// "compatibility_flags": [

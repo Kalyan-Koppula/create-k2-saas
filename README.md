@@ -1,135 +1,125 @@
-# Turborepo starter
+# K2-SaaS Template
 
-This Turborepo starter is maintained by the Turborepo core team.
+A modern, self-documenting SaaS template using React, TypeScript, and Cloudflare Workers.
 
-## Using this example
+## Features
 
-Run the following command:
+- 🚀 Full-stack TypeScript development
+- 📦 Monorepo structure with pnpm workspaces
+- ⚡ Fast builds with Turborepo
+- 🎨 Beautiful UI with ShadcnUI and TailwindCSS
+- 🔍 End-to-end type safety with Zod
+- 🗄️ SQLite database with Drizzle ORM
+- 🌩️ Serverless API with Cloudflare Workers
+- 📝 Self-documenting API and components
 
-```sh
-npx create-turbo@latest
-```
+## Stack
 
-## What's inside?
+### Frontend
+- React 19 with TypeScript
+- ShadcnUI Components
+- Zustand for State Management
+- React Router for Navigation
+- TailwindCSS for Styling
 
-This Turborepo includes the following packages/apps:
+### Backend
+- Cloudflare Workers
+- D1 Database (SQLite)
+- Drizzle ORM
+- Hono for API Routing
 
-### Apps and Packages
+### Shared
+- pnpm Workspace
+- Turborepo
+- Zod Schema Validation
+- Shared TypeScript Types
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## Getting Started
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Kalyan-Koppula/k2-sass.git
+   cd k2-sass
+   ```
 
-### Utilities
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
 
-This Turborepo has some additional tools already setup for you:
+3. Create a D1 database:
+   ```bash
+   cd apps/api
+   pnpm wrangler d1 create k2-sass-db
+   ```
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+4. Update `wrangler.toml` with your D1 database ID
 
-### Build
+5. Push the database schema:
+   ```bash
+   pnpm db:push
+   ```
 
-To build all apps and packages, run the following command:
+6. Start the development servers:
+   ```bash
+   # In the root directory
+   pnpm dev
+   ```
 
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
-```
-
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+## Project Structure
 
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+k2-sass/
+├── apps/
+│   ├── api/              # Cloudflare Worker API
+│   │   ├── src/
+│   │   │   ├── db/      # Database schema and config
+│   │   │   └── index.ts # API routes
+│   │   └── wrangler.toml
+│   │
+│   └── web/             # React frontend
+│       ├── src/
+│       │   ├── components/
+│       │   ├── pages/
+│       │   ├── store/
+│       │   └── utils/
+│       └── index.html
+│
+└── packages/
+    └── shared-types/    # Shared TypeScript types
+        └── src/
+            └── schemas.ts
 ```
 
-### Remote Caching
+## Development Workflow
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+1. **Database Schema**: Define your database schema in `apps/api/src/db/schema.ts`
+2. **API Types**: Add Zod schemas in `packages/shared-types/src/schemas.ts`
+3. **API Routes**: Implement routes in `apps/api/src/index.ts`
+4. **Frontend State**: Add Zustand stores in `apps/web/src/store`
+5. **UI Components**: Create pages and components in `apps/web/src/pages` and `components`
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## API Endpoints
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+### Users
+- `GET /users` - List all users
+- `POST /users` - Create a new user
 
-```
-cd my-turborepo
+### Posts
+- `GET /posts` - List all posts with authors
+- `POST /posts` - Create a new post
+- `GET /posts/:id` - Get post by ID
+- `PATCH /posts/:id` - Update post by ID
+- `DELETE /posts/:id` - Delete post by ID
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
+## Type Safety
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
+The template ensures end-to-end type safety through:
+1. Zod schemas for API payloads and responses
+2. Shared TypeScript types between frontend and backend
+3. Drizzle ORM for type-safe database queries
+4. React Hook Form with Zod validation
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## License
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+MIT
