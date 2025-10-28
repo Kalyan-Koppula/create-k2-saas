@@ -1,7 +1,9 @@
 {
-  "name": "k2-sass",
-  "private": true,
+  "name": "create-k2-sass",
+  "version": "1.0.0",
+  "description": "A full-stack SaaS template with React, TypeScript, and Cloudflare Workers",
   "type": "module",
+  "bin": "scripts/create.js",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -11,7 +13,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md,yaml,html}\"",
     "check-types": "turbo run check-types",
     "validate": "pnpm run format:check && pnpm run lint && pnpm run check-types",
-    "fix": "pnpm run format && pnpm run lint:fix"
+    "fix": "pnpm run format && pnpm run lint:fix",
+    "create": "node scripts/create.js"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
