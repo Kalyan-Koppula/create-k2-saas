@@ -3,7 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -13,8 +13,9 @@
     "skipLibCheck": true,
     "lib": ["ESNext", "DOM"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     },
+    "types": ["vite/client"],
     "baseUrl": "."
   },
   "include": [

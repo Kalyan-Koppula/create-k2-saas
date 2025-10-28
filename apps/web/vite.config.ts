@@ -13,10 +13,10 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react(), tailwindcss()],
     resolve: {
-      alias: {
-        '@': resolve(__dirname, './src'),
-        '@k2-saas': resolve(__dirname, '../../packages'),
-      },
+      alias: [
+        { find: '@', replacement: resolve(__dirname, './src') },
+        { find: '@k2-saas', replacement: resolve(__dirname, '../../packages') }
+      ]
     },
     server: {
       proxy: {
