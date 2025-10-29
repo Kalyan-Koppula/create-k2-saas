@@ -26,7 +26,7 @@ export default function App() {
                 </Link>
               </div>
               <a
-                href="https://github.com/Kalyan-Koppula/k2-sass"
+                href="https://github.com/Kalyan-Koppula/create-k2-sass"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-muted-foreground hover:text-foreground"
