@@ -1,34 +1,18 @@
 {
-  "name": "k2-saas",
-  "private": true,
+  "name": "create-k2-saas",
+  "version": "1.0.0",
+  "description": "A modern, self-documenting SaaS template using React, TypeScript, and Cloudflare Workers.",
   "type": "module",
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "eslint \"./apps/**/src/**/*.{ts,tsx}\" --config ./eslint.config.js",
-    "lint:fix": "eslint \"./apps/**/src/**/*.{ts,tsx}\" --config ./eslint.config.js --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md,yaml,html}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md,yaml,html}\"",
-    "check-types": "turbo run check-types",
-    "validate": "pnpm run format:check && pnpm run lint && pnpm run check-types",
-    "fix": "pnpm run format && pnpm run lint:fix"
+  "bin": {
+    "create-k2-saas": "./bin/cli.js"
   },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "9.38.0",
-    "@typescript-eslint/eslint-plugin": "8.46.2",
-    "@typescript-eslint/parser": "8.46.2",
-    "eslint": "9.38.0",
-    "eslint-config-turbo": "2.5.8",
-    "eslint-plugin-react-hooks": "5.2.0",
-    "eslint-plugin-react-refresh": "0.4.24",
-    "globals": "16.4.0",
-    "prettier": "3.6.2",
-    "turbo": "2.5.8",
-    "typescript": "5.9.2"
-  },
-  "packageManager": "pnpm@9.0.0",
-  "engines": {
-    "node": ">=18"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.19.0",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "fs-extra": "^11.3.2",
+    "inquirer": "^12.10.0"
   }
 }
