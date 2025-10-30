@@ -39,11 +39,11 @@ A modern, self-documenting SaaS template using React, TypeScript, and Cloudflare
 
 ## Getting Started
 
-1. Clone the repository:
+1. Bootstrap your application using this template:
 
    ```bash
-   git clone https://github.com/Kalyan-Koppula/k2-sass.git
-   cd k2-sass
+   npm create k2-saas my-saas-app
+   cd my-saas-app
    ```
 
 2. Install dependencies:
@@ -106,7 +106,7 @@ k2-sass/
 4. **Frontend State**: Add Zustand stores in `apps/web/src/store`
 5. **UI Components**: Create pages and components in `apps/web/src/pages` and `components`
 
-## API Endpoints
+## API Endpoints in the example project
 
 ### Users
 

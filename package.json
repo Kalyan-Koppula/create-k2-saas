@@ -10,6 +10,10 @@
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.19.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kalyan-Koppula/create-k2-saas.git"
+  },
   "dependencies": {
     "chalk": "^5.6.2",
     "fs-extra": "^11.3.2",
