@@ -1,6 +1,6 @@
 {
   "name": "create-k2-saas",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A modern, self-documenting SaaS template using React, TypeScript, and Cloudflare Workers.",
   "type": "module",
   "bin": {
