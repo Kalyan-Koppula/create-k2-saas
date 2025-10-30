@@ -35,6 +35,10 @@
     "type": "git",
     "url": "https://github.com/Kalyan-Koppula/create-k2-saas.git"
   },
+  "homepage": "https://github.com/Kalyan-Koppula/create-k2-saas#readme",
+  "bugs": {
+    "url": "https://github.com/Kalyan-Koppula/create-k2-saas/issues"
+  },
   "dependencies": {
     "chalk": "^5.6.2",
     "fs-extra": "^11.3.2",
